@@ -39,7 +39,7 @@ function asu_ednaquery_menu(){
 function asu_ednaquery_form($form, &$form_state){
   
   $dev = 'https://edna-dev.asu.edu/edna-ws/services/oauth/checkAccess/v1.0';
-  $test = 'https://edna-test.asu.edu/edna-ws/services/oauth/checkAccess/v1.0';
+  $test = 'https://edna-qa.asu.edu/edna-ws/services/oauth/checkAccess/v1.0';
   $live = 'https://edna.asu.edu/edna-ws/services/oauth/checkAccess/v1.0';
   
   $form = array();
@@ -128,7 +128,7 @@ function asu_ednaquery_get($asurite, $accessGroups){
     $method = "GET";
     
     for($i = 0; $i < count($accessGroups); $i++){    
-      $group = strtolower($accessGroups[$i]->name);
+      $group = $accessGroups[$i]->name;
       $servicePath = 'MyApps.' . $group;
       
       $params = array("servicePath" => $servicePath, "principal" => $user->name);
